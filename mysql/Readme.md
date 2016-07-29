@@ -42,9 +42,11 @@ Run this sentence
 
 For th my.cnf choose the file correspondant to yout MySQL version, example
 
+    ## Disable interactive copy
     unalias cp
+    
+    ## Stop MySQL
     systemctl stop mysqld
-
 
     ## If you're using 5.6
     cp config/my56.cnf.template /etc/my.cnf
@@ -78,10 +80,17 @@ Run this script:
 
 ## Useful commands:
 
-Export all databases:
+**Export all databases:**
 
     mysqldump --all-databases --single-transaction --set-gtid-purged=OFF > /tmp/mysql-all.sql
 
-Restore all databases:
+**Restore all databases:**
 
     mysql < /tmp/mysql-all.sql
+
+IMPORTANT: If you're restoring from a previous version of MySQL server you'll must run mysql_upgrade after the restore operation, if you have slaves servers you'll have to turn off the read-only feature temporarily in my.cnf file.
+
+**Enable passwordless login (Recommended)**
+
+    mysql_config_editor reset
+    mysql_config_editor set --user=root --password
