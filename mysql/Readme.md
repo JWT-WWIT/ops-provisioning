@@ -45,15 +45,13 @@ For th my.cnf choose the file correspondant to yout MySQL version, example
     unalias cp
     systemctl stop mysqld
 
+
     ## If you're using 5.6
     cp config/my56.cnf.template /etc/my.cnf
+
     ## If you're using 5.7
     cp config/my57.cnf.template /etc/my.cnf
 
-Also you must copy the additional config files:
-
-    cp -v config/my.cnf.d/*.cnf /etc/my.cnf.d/.
-   
 **Assingn server-id**
 
     common/set-server-id.sh
@@ -70,13 +68,13 @@ Instructions for a replicated master-slave solution (two nodes).
 
 Run this script:
 
-   cluster/master.sh
+    cluster/master.sh
 
 **Slave node**
 
 Run this script:
 
-   cluster/slave.sh
+    cluster/slave.sh
 
 ## Useful commands:
 

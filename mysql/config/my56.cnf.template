@@ -78,3 +78,40 @@ sql-mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 #
 #
 #
+# Add custom settings here
+
+# Cache all cacheable query results except for those that
+# begin with SELECT SQL_NO_CACHE. Use with MyISAM Databases.
+#query-cache-type = 1
+ 
+# If an in-memory temporary table exceeds the limit,
+# MySQL automatically converts it to an on-disk MyISAM table.
+# max-heap-table-size sets the maximum size to which user-created
+# MEMORY tables are permitted to grow. This variable is also used in
+# conjunction with tmp-table-size to limit the size of internal
+# in-memory tables.
+tmp-table-size = 32M
+max-heap-table-size = 32M
+
+# InnoDB maintains a storage area called the buffer pool for caching data
+# and indexes in memory . Knowing how the InnoDB buffer pool works, and taking
+# advantage of it to keep frequently accessed data in memory, is an important
+# aspect of MySQL tuning.
+#innodb-buffer-pool-size = 1G
+#innodb-buffer-pool-instances = 1
+
+# Enable the read only feature in order to avoid conflicts in slave hosts.
+
+# When the read-only system variable is enabled, the server permits no client
+# updates except from users who have the SUPER privilege.
+# a unique identity.
+#read-only = On
+
+#
+#
+# 
+#
+
+# Isolation mode
+# https://www.percona.com/blog/2015/01/14/mysql-performance-implications-of-innodb-isolation-modes/
+transaction-isolation = READ-COMMITTED
