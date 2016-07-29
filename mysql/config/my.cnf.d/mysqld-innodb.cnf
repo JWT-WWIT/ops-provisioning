@@ -1,0 +1,9 @@
+
+[mysqld]
+
+# InnoDB maintains a storage area called the buffer pool for caching data
+# and indexes in memory . Knowing how the InnoDB buffer pool works, and taking
+# advantage of it to keep frequently accessed data in memory, is an important
+# aspect of MySQL tuning.
+#innodb-buffer-pool-size = 1G
+#innodb-buffer-pool-instances = 1

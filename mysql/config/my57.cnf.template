@@ -1,0 +1,80 @@
+# For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
+
+[mysqld]
+
+# Here is a typical global option file:
+datadir         = /var/lib/mysql
+socket          = /var/lib/mysql/mysql.sock
+log-error       = /var/log/mysqld.log
+pid-file        = /var/run/mysqld/mysqld.pid
+
+#
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+# MySQL Server has a server character set and a server collation.
+# Ignore character set information sent by the client. 
+collation-server = utf8mb4_unicode_ci
+character-set-server = utf8mb4
+character-set-client-handshake = False
+
+# The server ID, used in replication to give each master and slave
+# a unique identity.
+server-id = 1
+
+# Running a server with binary logging enabled makes performance slightly
+# slower. However, the benefits of the binary log in enabling you to set
+# up replication and for restore operations generally outweigh this
+# minor performance decrement.
+log-bin = mysql-bin
+expire-logs-days = 7
+binlog-format = MIXED
+log-slave-updates = On
+gtid-mode = On
+enforce-gtid-consistency = On
+master-info-repository = Table
+relay-log-info-repository = Table
+
+# The general query log is a general record of what mysqld is doing.
+# The server writes information to this log when clients connect or
+# disconnect, and it logs each SQL statement received from clients.
+general-log = Off
+general-log-file = /var/lib/mysql/mysql-general.log
+
+# The slow query log consists of SQL statements that took more than
+# long-query-time seconds to execute. 
+slow-query-log = Off
+slow-query-log-file = /var/lib/mysql/mysql-slow.log
+long-query-time = 1
+log-queries-not-using-indexes
+
+# Preloading the InnoDB Buffer Pool for Faster Restart
+innodb-buffer-pool-dump-at-shutdown = On
+innodb-buffer-pool-load-at-startup = On
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+# This variable applies when binary logging is enabled.
+# It controls whether stored function creators can be trusted
+# not to create stored functions
+log-bin-trust-function-creators = On
+
+# The MySQL server can operate in different SQL modes
+# and can apply these modes differently for different clients
+# Modes affect the SQL syntax MySQL supports and the data validation
+# checks it performs. This makes it easier to use MySQL in different
+# environments and to use MySQL together with other database servers.
+# Uncomment if you have problems with ONLY_FULL_GROUP_BY
+# sql-mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+# Uncomment if this host is slave of MySQL 5.6 Master
+# sql-mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
