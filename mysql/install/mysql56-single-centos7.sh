@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eux
 
+MYSQLHELPER='install/mysql57-root-password.expect'
+
 ################
 ## Base system
 

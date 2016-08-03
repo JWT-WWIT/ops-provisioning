@@ -4,7 +4,7 @@ set -eux
 ####################
 ## External scripts
 
-MYSQLHELPER='mysql57-root-password.expect'
+MYSQLHELPER='install/mysql57-root-password.expect'
 
 ################
 ## Base system
