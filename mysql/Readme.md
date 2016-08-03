@@ -23,7 +23,7 @@ As pre-requisite you will have to use RHEL/CentOS/Oracle version 7.x
 
 **For MySQL 5.7**
 
-    install/mysql56-single-centos7.sh
+    install/mysql57-single-centos7.sh
 ## 2. Configuration
 
 **Password plugin policy**
@@ -88,7 +88,8 @@ Run this script:
 
     mysql < /tmp/mysql-all.sql
 
-IMPORTANT: If you're restoring from a previous version of MySQL server you'll must run mysql_upgrade after the restore operation, if you have slaves servers you'll have to turn off the read-only feature temporarily in my.cnf file.
+
+IMPORTANT: If you're restoring from a previous version of MySQL server you must disable the read-only mode in slave servers, run mysql_upgrade after the restore operation in all hosts, if you have slaves servers you'll have to turn off the read-only feature temporarily in my.cnf file. Don't forget to re-enable the read-only mode in slaves.
 
 **Enable passwordless login (Recommended)**
 
