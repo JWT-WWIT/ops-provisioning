@@ -17,13 +17,9 @@ We have a lot of things running in MySQL. What we have in this repo?
 ## 1. Installation
 As pre-requisite you will have to use RHEL/CentOS/Oracle version 7.x
 
-**For MySQL 5.6**
 
-    install/mysql56-single-centos7.sh
+    install/mysql57-el7.sh
 
-**For MySQL 5.7**
-
-    install/mysql57-single-centos7.sh
 ## 2. Configuration
 
 **Password plugin policy**
@@ -47,9 +43,6 @@ For th my.cnf choose the file correspondant to yout MySQL version, example
     
     ## Stop MySQL
     systemctl stop mysqld
-
-    ## If you're using 5.6
-    cp config/my56.cnf.template /etc/my.cnf
 
     ## If you're using 5.7
     cp config/my57.cnf.template /etc/my.cnf
@@ -77,6 +70,7 @@ Run this script:
 Run this script:
 
     cluster/slave.sh
+    systemctl restart mysqld
 
 ## Useful commands:
 
