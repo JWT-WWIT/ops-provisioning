@@ -11,5 +11,5 @@ echo ""
 echo -n "Type master hostname: "
 read MASTER_HOST
 cat cluster/sql/101-slave.sql.tpl | sed -e s/BENDERRODIGUEZ/$MASTER_HOST/g > cluster/sql/101-slave.sql
-echo "PRESS ENTER TO START SLAVE"
 mysql < cluster/sql/101-slave.sql
+systemctl restart mysqld.service

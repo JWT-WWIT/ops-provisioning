@@ -56,6 +56,7 @@ else
    cp $MYSQLHELPER /var/lib/mysql/.root-password.expect -L
    expect /var/lib/mysql/.root-password.expect $(grep -i 'A temporary password' /var/log/mysqld.log | awk '{print $NF}') $(pwgen -1Bc 4).$(pwgen -1nB 4)-$(pwgen -1nB 4)_$(pwgen -1nB 4)
    rm -f /var/lib/mysql/.root-password.expect
+   echo "UPDATE mysql.user SET host = '%' WHERE user = 'root';" | mysql
+   echo "FLUSH PRIVILEGES;" | mysql
 fi
-
 echo "Process Finished!!!"
